@@ -1,0 +1,20 @@
+[
+  {
+    "name": "🧠 Задать вопрос",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "🧠 Задать вопрос — you're in the right place. What would you like to do next?"
+            }
+          }
+        ],
+        "send": {
+          "callback": "chat:ask"
+        }
+      }
+    ]
+  }
+]
