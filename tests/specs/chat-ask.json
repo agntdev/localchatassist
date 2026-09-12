@@ -7,7 +7,7 @@
           {
             "method": "sendMessage",
             "payload": {
-              "text": "🧠 Задать вопрос — you're in the right place. What would you like to do next?"
+              "text": "Напишите вопрос — отвечу коротко и по делу."
             }
           }
         ],

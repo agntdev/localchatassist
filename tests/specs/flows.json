@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Dagestani answer follows selection",
+    "steps": [
+      { "send": { "text": "/start" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Кто ты по национальности?" } }] },
+      { "send": { "callback": "lang:dagestani" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Салам! Я рядом. Выбери действие ниже." } }] },
+      { "send": { "callback": "chat:ask" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Напиши вопрос — отвечу коротко и по делу." } }] },
+      { "send": { "text": "Помоги написать сообщение" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Салам, разберём по‑простому: Помоги написать сообщение" } }] }
+    ]
+  },
+  {
+    "name": "Language fallback and clear history",
+    "steps": [
+      { "send": { "text": "/start" }, "expect": [{ "method": "sendMessage" }] },
+      { "send": { "callback": "lang:other" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Напишите язык, на котором вам удобно общаться." } }] },
+      { "send": { "text": "немецкий" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Пока я уверенно говорю по-русски, в дагестанском формате и по-азербайджански. Выберите один из вариантов." } }] },
+      { "send": { "callback": "chat:new" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Начать новый чат? Предыдущий контекст будет очищен." } }] },
+      { "send": { "callback": "chat:new:yes" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Готово — начинаем новый чат." } }] }
+    ]
+  },
+  {
+    "name": "Privacy settings delete profile",
+    "steps": [
+      { "send": { "callback": "settings:open" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Настройте общение и данные." } }] },
+      { "send": { "callback": "settings:clear" }, "expect": [{ "method": "sendMessage", "payload": { "text": "История очищена. Профиль остался на месте." } }] },
+      { "send": { "callback": "settings:delete" }, "expect": [{ "method": "sendMessage", "payload": { "text": "Профиль и история удалены. В любой момент начните заново через /start." } }] }
+    ]
+  }
+]

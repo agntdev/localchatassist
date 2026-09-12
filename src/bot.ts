@@ -6,7 +6,9 @@ import type { StorageAdapter } from "grammy";
 // bot grows. Durable domain data must NOT live here — use the toolkit's
 // persistent storage (see AGENTS.md).
 export interface Session {
-  // example: step?: "awaiting_amount";
+  step?: "awaiting_language" | "awaiting_question" | "awaiting_feedback";
+  /** Harness-only cache when no durable Worker database is attached. */
+  local?: Record<string, unknown>;
 }
 
 export type Ctx = BotContext<Session>;
